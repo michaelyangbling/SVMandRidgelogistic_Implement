@@ -1,9 +1,12 @@
 #Ridge Logistic Regression
+#training data in dataset2 are somewhat mixed with each other,
+#which make them not so separable as dataset1
+#thus the trained model is not as good as dataset1
 import scipy.io
 from sklearn import preprocessing
 import numpy as np
 import math
-mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/hw03_DS5220_Data/data2.mat')
+mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/hw03_DS5220_Data/data1.mat')
 print("class is balanced since class-1 occupies proportion of: "+str(mat["Y_trn"].mean()))
 scaler = preprocessing.StandardScaler().fit(mat["X_trn"]) #feature scaling
 Xtrn   = scaler.transform(mat["X_trn"])
@@ -60,9 +63,9 @@ trnX2=Xtrn[:,1]
 trnClass=mat["Y_trn"].flatten().tolist()
 for i in range(0,len(trnClass)): #0 corresponds to color green,1:red
     if trnClass[i]==0:
-        trnClass[i]="tab:green"
+        trnClass[i]="green"
     else:
-        trnClass[i] = "tab:red"
+        trnClass[i] = "red"
 plt.scatter(trnX2,trnX1,c=trnClass)
 print("training-set plot")
 plt.show()
@@ -72,10 +75,10 @@ tstX1=mat["X_tst"][:,0]
 tstX2=mat["X_tst"][:,1]
 tstClass=mat["Y_tst"].flatten().tolist()
 for i in range(0,len(tstClass)): #0 corresponds to color green,1:red
-    if trnClass[i]==0:
-        trnClass[i]="tab:green"
+    if tstClass[i]==0:
+        tstClass[i]="green"
     else:
-        trnClass[i] = "tab:red"
+        tstClass[i] = "red"
 plt.scatter(tstX2,tstX1,c=tstClass)
 print("test-set plot")
 plt.show()
