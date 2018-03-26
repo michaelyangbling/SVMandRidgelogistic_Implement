@@ -3,7 +3,7 @@ from sklearn import preprocessing
 import numpy as np
 import math
 import random
-mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/hw03_DS5220_Data/data2.mat')
+mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/hw03_DS5220_Data/data1.mat')
 print("class is balanced since class-1 occupies proportion of: "+str(mat["Y_trn"].mean()))
 scaler = preprocessing.StandardScaler().fit(mat["X_trn"]) #feature scaling
 Xtrn   = scaler.transform(mat["X_trn"])
@@ -146,3 +146,5 @@ plt.scatter(list(map(lambda x: x/25, range(1,2500,10))), trnAcc,c='green')
 plt.scatter(list(map(lambda x: x/25, range(1,2500,10))), testAcc,c='red')
 print("testErr dependent on reguPara C,red")
 plt.show()
+#C is hyperparameter for regularization( dealing with overfitting )
+#for simple dataset where outliers are rare, increasing C can bring better performance on test set

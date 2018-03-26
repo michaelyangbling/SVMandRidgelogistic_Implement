@@ -6,7 +6,7 @@ import scipy.io
 from sklearn import preprocessing
 import numpy as np
 import math
-mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/hw03_DS5220_Data/data1.mat')
+mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/hw03_DS5220_Data/data2.mat')
 print("class is balanced since class-1 occupies proportion of: "+str(mat["Y_trn"].mean()))
 scaler = preprocessing.StandardScaler().fit(mat["X_trn"]) #feature scaling
 Xtrn   = scaler.transform(mat["X_trn"])
